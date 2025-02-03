@@ -1,34 +1,29 @@
 package healthcare.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Data
+@ToString(exclude = { "patients", "appointments", "offices"})
 @Entity
 @Table(name="Doctors")
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString(exclude = { "patients", "appointments", "offices"})
 public class Doctor {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="DoctorID")
-    int doctorId;
+    private int doctorId;
     @Column(name="FirstName")
-    String firstName;
+    private String firstName;
     @Column(name="LastName")
-    String lastName;
+    private String lastName;
     @Column(name="Specialty")
-    String specialty;
+    private String specialty;
     @Column(name="Email")
-    String email;
+    private String email;
 
     @OneToMany(mappedBy = "doctor" , cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Appointment> appointments= new HashSet<Appointment>();
@@ -43,26 +38,7 @@ public class Doctor {
     Set<Patient> patients=new HashSet<>();
 
     @OneToOne(mappedBy = "doctor" , cascade= CascadeType.ALL)
-    Office office;
-
-    public Doctor(int doctorId, String firstName, String lastName, String specialty, String email) {
-        this.doctorId = doctorId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.specialty = specialty;
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "doctorId=" + doctorId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", specialty='" + specialty + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    private Office office;
 
     @Override
     public boolean equals(Object o) {
@@ -78,6 +54,4 @@ public class Doctor {
     }
 }
 
-/*https://github.com/sravana1881/Healthcare_hibernate_1.0.1.git
 
- */

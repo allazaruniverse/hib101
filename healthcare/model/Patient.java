@@ -2,20 +2,17 @@ package healthcare.model;
 
 import jakarta.persistence.*;
 import healthcare.model.Appointment;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
+@Data
 @Entity
 @Table(name = "Patients")
-@Getter
-@Setter
-@NoArgsConstructor
+
+
 @ToString(exclude = "doctors")
 
 public class Patient {
@@ -41,33 +38,11 @@ public class Patient {
     private String phoneNumber;
 
     @OneToMany( mappedBy ="patient" ,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<Appointment> appointments= new HashSet<>();
+    private Set<Appointment> appointments= new HashSet<>();
 
     @ManyToMany(mappedBy = "patients",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<Doctor> doctors= new HashSet<>();
+    private Set<Doctor> doctors= new HashSet<>();
 
-
-
-    // Parameterized constructor for convenience
-    public Patient(String firstName, String lastName, String dateOfBirth, String email, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "patientId=" + patientId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

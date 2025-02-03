@@ -1,37 +1,36 @@
 package healthcare.model;
 
 import jakarta.persistence.*;
+import healthcare.model.Appointment;
 import lombok.*;
 
 
 import java.util.Objects;
 
+
+@Data
+@ToString(exclude = {"patient", "doctor"})
 @Entity
 @Table(name="Appointments")
-@Getter
-@Setter
-@ToString(exclude = {"patient", "doctor"})
+
 public class Appointment {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="AppointmentID")
-    int appointmentId;
-    //    @Column(name="PatientID")
-//    int patientId;
-//    @Column(name="DoctorID")
-//    int doctorId;
+    private int appointmentId;
+
     @Column(name="AppointmentDate")
-    String appointmentDate;
+    private String appointmentDate;
     @Column(name="Notes")
-    String notes;
+    private String notes;
 
     @ManyToOne
     @JoinColumn(name="PatientID")
-    Patient patient;
+    private Patient patient;
 
     @ManyToOne
     @JoinColumn(name="DoctorID")
-    Doctor doctor;
+    private Doctor doctor;
 
     public Appointment() {
     }

@@ -129,6 +129,7 @@ public class Main {
                     System.out.println("Listing All Doctors:");
                     for (Doctor d : doctorService.getAllDoctors()) {
                         System.out.println(d);
+                        System.out.println();
                     }
                     break;
                 default:
@@ -222,6 +223,7 @@ public class Main {
                     System.out.println("Listing All Patients:");
                     for (Patient p : patientService.getAllPatients()) {
                         System.out.println(p);
+                        System.out.println();
                     }
                     break;
                 default:
@@ -361,6 +363,7 @@ public class Main {
                     System.out.println("Listing All Appointments:");
                     for (Appointment a : appointmentService.getAllAppointments()) {
                         System.out.println(a);
+                        System.out.println();
                     }
                     break;
                 default:
@@ -441,10 +444,13 @@ public class Main {
                 System.out.println("Listing All Offices:");
                 for (Office o : officeService.getAllOffices()) {
                     System.out.println(o);
+                    System.out.println();
                 }
                 break;
             default:
                 System.out.println("Invalid choice.");
         }
     }
+
+    //
 }

@@ -1,32 +1,27 @@
 package healthcare.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Objects;
 
+@Data
+@ToString(exclude = "doctors")
 @Entity
 @Table(name="Offices")
-@Getter
-@Setter
-@ToString(exclude = "doctors")
-@NoArgsConstructor
 public class Office {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="OfficeID")
-    int officeId;
-    @Column(name="Location")
-    String location;
-    @Column(name="Phone")
-    String phone;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "OfficeID")
+    private int officeId;
+    @Column(name = "Location")
+    private String location;
+    @Column(name = "Phone")
+    private String phone;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="DoctorID")
-    Doctor doctor;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "DoctorID")
+    private Doctor doctor;
 
     @Override
     public boolean equals(Object o) {
@@ -39,16 +34,7 @@ public class Office {
     @Override
     public int hashCode() {
         return Objects.hash(officeId);
-
-    }
-
-    @Override
-    public String toString() {
-        return "Office{" +
-                "officeId=" + officeId +
-                ", location='" + location + '\'' +
-                ", phone='" + phone + '\'' +
-                ", doctorId=" + (doctor != null ? doctor.getDoctorId() : "N/A") +
-                '}';
     }
 }
+
+

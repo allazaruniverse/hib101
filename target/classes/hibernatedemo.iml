@@ -8,7 +8,9 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="patient.cfg.xml" value="ffd5008c-a2ef-445c-9c03-13aee464ad01" />
+        </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/patient.cfg.xml" />
       </configuration>

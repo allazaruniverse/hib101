@@ -10,7 +10,7 @@
 
 
         <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
 
         <!-- Echo all executed SQL to stdout -->
@@ -22,6 +22,10 @@
         <!-- Names of annotated entity classes -->
 
         <mapping class="healthcare.model.Patient"/>
+        <mapping class="healthcare.model.Doctor"/>
+        <mapping class="healthcare.model.Appointment"/>
+        <mapping class="healthcare.model.Office"/>
+
 
     </session-factory>
 </hibernate-configuration>
